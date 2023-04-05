@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import ucode.servermateauth.exceptions.UserNotFoundException;
 import ucode.servermateauth.model.LoginRequest;
-import ucode.servermateauth.model.LoginResponse;
+import ucode.servermateauth.model.RegisterRequest;
+import ucode.servermateauth.model.AuthResponse;
+import ucode.servermateauth.user.User;
 import ucode.servermateauth.user.UserRepository;
 
 /**
@@ -16,10 +18,17 @@ import ucode.servermateauth.user.UserRepository;
 public class AuthService {
   private final UserRepository userRepository;
 
-  public LoginResponse login(LoginRequest credentials) {
+  public AuthResponse login(LoginRequest credentials) {
     var user = userRepository.findByEmail(credentials.email());
     if (user.isPresent())
-      return new LoginResponse(user.get().getEmail(), user.get().getUsername());
+      return new AuthResponse(user.get().getEmail(), user.get().getUsername());
     throw new UserNotFoundException(credentials.email());
+  }
+
+  public AuthResponse register(RegisterRequest user) {
+    var createdId = userRepository
+        .save(User.builder().email(user.email()).username(user.username()).password(user.password()).build());
+    var createdUser = userRepository.findById(createdId).get();
+    return new AuthResponse(createdUser.getEmail(), createdUser.getUsername());
   }
 }
