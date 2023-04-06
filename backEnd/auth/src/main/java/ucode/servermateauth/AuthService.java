@@ -3,6 +3,7 @@ package ucode.servermateauth;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import ucode.servermateauth.exceptions.UserAlreadyExistsException;
 import ucode.servermateauth.exceptions.UserNotFoundException;
 import ucode.servermateauth.model.LoginRequest;
 import ucode.servermateauth.model.RegisterRequest;
@@ -26,6 +27,8 @@ public class AuthService {
   }
 
   public AuthResponse register(RegisterRequest user) {
+    if (userRepository.findByEmail(user.email()).isPresent())
+      throw new UserAlreadyExistsException(user.email());
     var createdId = userRepository
         .save(User.builder().email(user.email()).username(user.username()).password(user.password()).build());
     var createdUser = userRepository.findById(createdId).get();
