@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  submit(e: Event) {
+    e.preventDefault();
+    this.register();
+  }
+  register() {
+    console.log('register');
+  }
+
 }
