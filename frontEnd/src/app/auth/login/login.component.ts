@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  submit(e: Event) {
+    e.preventDefault();
+  }
+  login() {
+    console.log('login');
+  }
 }
+
