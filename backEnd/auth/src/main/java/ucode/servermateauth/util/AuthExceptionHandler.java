@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import ucode.servermateauth.exceptions.UserAlreadyExistsException;
 import ucode.servermateauth.exceptions.UserNotFoundException;
+import ucode.servermateauth.exceptions.WrongPasswordException;
 import ucode.servermateauth.model.ErrorResponse;
 
 /**
@@ -16,7 +17,7 @@ import ucode.servermateauth.model.ErrorResponse;
 @RestControllerAdvice(annotations = RestController.class)
 public class AuthExceptionHandler {
 
-  @ExceptionHandler({ UserNotFoundException.class, UserAlreadyExistsException.class })
+  @ExceptionHandler({ UserNotFoundException.class, UserAlreadyExistsException.class, WrongPasswordException.class })
   public ResponseEntity<ErrorResponse> handleUserNotFound(RuntimeException exception) {
     return ResponseEntity
         .badRequest()
