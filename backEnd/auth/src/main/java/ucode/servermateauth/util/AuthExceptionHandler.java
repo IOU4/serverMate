@@ -1,4 +1,4 @@
-package ucode.servermateauth;
+package ucode.servermateauth.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import ucode.servermateauth.exceptions.UserAlreadyExistsException;
 import ucode.servermateauth.exceptions.UserNotFoundException;
-import ucode.servermateauth.util.ErrorResponse;
+import ucode.servermateauth.model.ErrorResponse;
 
 /**
  * AuthExceptionHandler
