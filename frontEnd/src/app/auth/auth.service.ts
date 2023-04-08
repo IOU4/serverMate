@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface LoginResponse {
+  email: string
+  username: string
+}
+interface LoginError {
+  message: string
+  status: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +19,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string) {
-    return this.http.post(this.baseApi + 'login', {
+    console.log(email);
+    return this.http.post<LoginResponse>(this.baseApi + 'login', {
       email: email,
       password: password
-    });
+    })
   }
 
   register(email: string, username: string, password: string) {

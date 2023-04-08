@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService, LoginResponse } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +10,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  submit(e: Event) {
-    e.preventDefault();
+  constructor(private authService: AuthService, private router: Router) { }
+
+  email = '';
+  password = '';
+  errors = '';
+  submit(loginForm: NgForm) {
+    const thiss = this;
+    const { email, password } = loginForm.value;
+    const loginObserver = {
+      next(_: LoginResponse) {
+      },
+      error(err: HttpErrorResponse) {
+        thiss.showAlert(err.error.message)
+      },
+      complete() {
+        thiss.router.navigate(['/home'])
+      }
+    }
+    this.authService.login(email, password).subscribe(loginObserver);
   }
-  login() {
-    console.log('login');
+  showAlert(msg: string) {
+    this.errors = msg;
+    setTimeout(() => this.errors = '', 3000);
   }
 }
 
