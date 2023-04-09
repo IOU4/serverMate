@@ -1,11 +1,12 @@
-<section class="min-h-screen flex flex-col">
-  <header class="w-full flex justify-center mb-5">
+<div class="min-h-screen flex flex-col items-start gap-16 relative">
+  <header class="self-center">
     <app-header />
   </header>
-  <main>
+  <main class="self-center flex gap-10 ">
+    <app-sidebar class="absolute left-10" />
     <router-outlet />
   </main>
-  <footer class="mt-auto">
+  <footer class="mt-auto self-center">
     <app-footer />
   </footer>
-</section>
+</div>
