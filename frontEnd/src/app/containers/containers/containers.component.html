@@ -14,6 +14,7 @@
       <thead class="text-gray-600 font-medium border-b">
         <tr>
           <th class="py-3 pr-6">Id</th>
+          <th class="py-3 pr-6">Name</th>
           <th class="py-3 pr-6">Image</th>
           <th class="py-3 pr-6">Status</th>
           <th class="py-3 pr-6">Created</th>
@@ -24,13 +25,21 @@
       </thead>
       <tbody class="text-gray-600 divide-y">
         <tr *ngFor="let item of tableItems ">
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.id}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.name}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.date}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">
-            <span class="px-3 py-2 rounded-full font-semibold text-xs text-green-600 bg-green-50"> {{item.status}}
-            </span>
-          </td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.plan}}</td>
+          <div *ngIf="item.status == 'Active'; then running else notRunning"></div>
+          <ng-template #running>
+            <td class="pr-6 py-4 whitespace-nowrap">
+              <span class="px-3 py-2 rounded-full font-semibold text-xs text-green-600 bg-green-50"> Running </span>
+            </td>
+          </ng-template>
+          <ng-template #notRunning>
+            <td class="pr-6 py-4 whitespace-nowrap">
+              <span class="px-3 py-2 rounded-full font-semibold text-xs text-red-600 bg-red-50">Exited</span>
+            </td>
+          </ng-template>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.date}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.price}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.price}}</td>
           <td class="text-right whitespace-nowrap">
