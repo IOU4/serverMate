@@ -8,6 +8,7 @@ import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Container;
 
 import lombok.RequiredArgsConstructor;
+import ucode.servermatecontainers.exceptions.ContainerNotFoundException;
 
 /**
  * ContainersService
@@ -20,5 +21,15 @@ public class ContainersService {
 
   public List<Container> getAllContaieners() {
     return dockerClient.listContainersCmd().exec();
+  }
+
+  public Container findContainer(String id) {
+    var container = dockerClient.listContainersCmd().exec()
+        .stream()
+        .filter(c -> c.getId().equals(id))
+        .findFirst();
+    if (!container.isPresent())
+      throw new ContainerNotFoundException(id);
+    return container.get();
   }
 }
