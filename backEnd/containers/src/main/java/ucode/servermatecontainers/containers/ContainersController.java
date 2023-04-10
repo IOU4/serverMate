@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.dockerjava.api.model.Container;
 
 import lombok.RequiredArgsConstructor;
+import ucode.servermatecontainers.model.SuccessResponse;
 
 /**
  * ContainersController
  */
 @RestController
-@RequestMapping("/api/v1/containers")
+@RequestMapping("/api/v1/container")
 @RequiredArgsConstructor
 public class ContainersController {
 
@@ -28,7 +29,32 @@ public class ContainersController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Container> getSingelContainer(@PathVariable String id) {
+  public ResponseEntity<Container> getSingelContainer(@PathVariable("id") String id) {
     return ResponseEntity.ok(containersService.findContainer(id));
+  }
+
+  @GetMapping("/{id}/stop")
+  public ResponseEntity<SuccessResponse> stopContainer(@PathVariable("id") String containerId) {
+    return ResponseEntity.ok(containersService.stopContainer(containerId));
+  }
+
+  @GetMapping("/{id}/start")
+  public ResponseEntity<SuccessResponse> startContainer(@PathVariable("id") String containerId) {
+    return ResponseEntity.ok(containersService.startContainer(containerId));
+  }
+
+  @GetMapping("/{id}/restart")
+  public ResponseEntity<SuccessResponse> restartContainer(@PathVariable("id") String containerId) {
+    return ResponseEntity.ok(containersService.restartContainer(containerId));
+  }
+
+  @GetMapping("/{id}/remove")
+  public ResponseEntity<SuccessResponse> removeContainer(@PathVariable("id") String containerId) {
+    return ResponseEntity.ok(containersService.removeContainer(containerId));
+  }
+
+  @GetMapping("/{id}/logs")
+  public ResponseEntity<String> logContainer(@PathVariable("id") String containerId) {
+    return ResponseEntity.ok(containersService.getContainerLogs(containerId));
   }
 }
