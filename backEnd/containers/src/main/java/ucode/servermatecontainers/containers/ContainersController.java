@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.dockerjava.api.model.Container;
 
 import lombok.RequiredArgsConstructor;
+import ucode.servermatecontainers.model.ContainerLogResponse;
 import ucode.servermatecontainers.model.SuccessResponse;
 
 /**
@@ -54,7 +55,7 @@ public class ContainersController {
   }
 
   @GetMapping("/{id}/logs")
-  public ResponseEntity<String> logContainer(@PathVariable("id") String containerId) {
+  public ResponseEntity<ContainerLogResponse> logContainer(@PathVariable("id") String containerId) {
     return ResponseEntity.ok(containersService.getContainerLogs(containerId));
   }
 }

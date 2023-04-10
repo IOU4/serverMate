@@ -17,7 +17,7 @@ import ucode.servermatecontainers.model.ErrorResponse;
 @RestControllerAdvice(annotations = RestController.class)
 public class ContainerExceptionHandler {
 
-  @ExceptionHandler({ ContainerNotFoundException.class, NotFoundException.class })
+  @ExceptionHandler({ ContainerNotFoundException.class, NotFoundException.class, InterruptedException.class })
   public ResponseEntity<ErrorResponse> handleNtFound(RuntimeException exception) {
     return ResponseEntity.badRequest()
         .body(new ErrorResponse(exception.getMessage(), HttpStatus.NOT_FOUND));

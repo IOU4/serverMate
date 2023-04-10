@@ -12,6 +12,7 @@ import com.github.dockerjava.api.model.Frame;
 
 import lombok.RequiredArgsConstructor;
 import ucode.servermatecontainers.exceptions.ContainerNotFoundException;
+import ucode.servermatecontainers.model.ContainerLogResponse;
 import ucode.servermatecontainers.model.SuccessResponse;
 
 /**
@@ -62,7 +63,7 @@ public class ContainersService {
   }
 
   // get contianer logs
-  public String getContainerLogs(String containerId) {
+  public ContainerLogResponse getContainerLogs(String containerId) {
     var containerLog = new StringBuilder();
     var resultCallback = new ResultCallback.Adapter<Frame>() {
       @Override
@@ -75,7 +76,7 @@ public class ContainersService {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    return containerLog.toString();
+    return new ContainerLogResponse(containerLog.toString());
   }
 
 }
