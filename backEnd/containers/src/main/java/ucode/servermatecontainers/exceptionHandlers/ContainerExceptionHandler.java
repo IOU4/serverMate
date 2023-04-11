@@ -18,9 +18,15 @@ import ucode.servermatecontainers.model.ErrorResponse;
 public class ContainerExceptionHandler {
 
   @ExceptionHandler({ ContainerNotFoundException.class, NotFoundException.class, InterruptedException.class })
-  public ResponseEntity<ErrorResponse> handleNtFound(RuntimeException exception) {
+  public ResponseEntity<ErrorResponse> handleNotFound(RuntimeException exception) {
     return ResponseEntity.badRequest()
         .body(new ErrorResponse(exception.getMessage(), HttpStatus.NOT_FOUND));
+  }
+
+  @ExceptionHandler(IndexOutOfBoundsException.class)
+  public ResponseEntity<ErrorResponse> handleNtFound(RuntimeException exception) {
+    return ResponseEntity.badRequest()
+        .body(new ErrorResponse("couldn't find the requested resource", HttpStatus.NOT_FOUND));
   }
 
 }
