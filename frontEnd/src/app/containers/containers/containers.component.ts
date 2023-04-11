@@ -5,7 +5,7 @@ interface Item {
   name: string
   date: string
   status: string
-  price: string
+  cmd: string
   plan: string
 }
 @Component({
@@ -22,7 +22,7 @@ export class ContainersComponent {
       name: "Solo learn app",
       date: "Oct 9, 2023",
       status: "Active",
-      price: "$35.000",
+      cmd: "$35.000",
       plan: "Monthly subscription"
     },
     {
@@ -30,7 +30,7 @@ export class ContainersComponent {
       name: "Window wrapper",
       date: "Oct 12, 2023",
       status: "Active",
-      price: "$12.000",
+      cmd: "$12.000",
       plan: "Monthly subscription"
     },
     {
@@ -38,7 +38,7 @@ export class ContainersComponent {
       name: "Unity loroin",
       date: "Oct 22, 2023",
       status: "Archived",
-      price: "$20.000",
+      cmd: "$20.000",
       plan: "Annually subscription"
     },
     {
@@ -46,7 +46,7 @@ export class ContainersComponent {
       name: "Background remover",
       date: "Jan 5, 2023",
       status: "Active",
-      price: "$5.000",
+      cmd: "$5.000",
       plan: "Monthly subscription"
     },
     {
@@ -54,7 +54,7 @@ export class ContainersComponent {
       name: "Colon tiger",
       date: "Jan 6, 2023",
       status: "Active",
-      price: "$9.000",
+      cmd: "$9.000",
       plan: "Annually subscription"
     },
     {
@@ -62,7 +62,7 @@ export class ContainersComponent {
       name: "Solo learn app",
       date: "Oct 9, 2023",
       status: "Active",
-      price: "$35.000",
+      cmd: "$35.000",
       plan: "Monthly subscription"
     },
     {
@@ -70,7 +70,7 @@ export class ContainersComponent {
       name: "Window wrapper",
       date: "Oct 12, 2023",
       status: "Active",
-      price: "$12.000",
+      cmd: "$12.000",
       plan: "Monthly subscription"
     },
     {
@@ -78,7 +78,7 @@ export class ContainersComponent {
       name: "Unity loroin",
       date: "Oct 22, 2023",
       status: "Archived",
-      price: "$20.000",
+      cmd: "$20.000",
       plan: "Annually subscription"
     },
     {
@@ -86,7 +86,7 @@ export class ContainersComponent {
       name: "Background remover",
       date: "Jan 5, 2023",
       status: "Active",
-      price: "$5.000",
+      cmd: "$5.000",
       plan: "Monthly subscription"
     },
     {
@@ -94,7 +94,7 @@ export class ContainersComponent {
       name: "Colon tiger",
       date: "Jan 6, 2023",
       status: "Active",
-      price: "$9.000",
+      cmd: "$9.000",
       plan: "Annually subscription"
     },
     {
@@ -102,14 +102,14 @@ export class ContainersComponent {
       name: "Solo learn app",
       date: "Oct 9, 2023",
       status: "Active",
-      price: "$35.000",
+      cmd: "$35.000",
       plan: "Monthly subscription"
     },
     {
       name: "Window wrapper",
       date: "Oct 12, 2023",
       status: "Active",
-      price: "$12.000",
+      cmd: "$12.000",
       plan: "Monthly subscription",
       id: "123sdlkafj"
     },
@@ -118,7 +118,7 @@ export class ContainersComponent {
       name: "Unity loroin",
       date: "Oct 22, 2023",
       status: "Archived",
-      price: "$20.000",
+      cmd: "$20.000",
       plan: "Annually subscription"
     },
     {
@@ -126,7 +126,7 @@ export class ContainersComponent {
       name: "Background remover",
       date: "Jan 5, 2023",
       status: "Active",
-      price: "$5.000",
+      cmd: "$5.000",
       plan: "Monthly subscription"
     },
     {
@@ -134,7 +134,7 @@ export class ContainersComponent {
       name: "Colon tiger",
       date: "Jan 6, 2023",
       status: "Active",
-      price: "$9.000",
+      cmd: "$9.000",
       plan: "Annually subscription"
     },
   ]
