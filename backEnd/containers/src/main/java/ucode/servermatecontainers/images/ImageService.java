@@ -23,6 +23,10 @@ public class ImageService {
     return dockerClient.listImagesCmd().exec();
   }
 
+  public Image getImage(String imageId) {
+    return dockerClient.listImagesCmd().withImageNameFilter(imageId).exec().get(0);
+  }
+
   public void deleteImage(String imageId) {
     dockerClient.removeImageCmd(imageId).exec();
   }

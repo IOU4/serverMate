@@ -28,7 +28,7 @@ public class VolumeController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteVolume(@PathVariable("id") String id) {
-    volumeService.deleterVolume(id);
+    volumeService.removeVolume(id);
     return ResponseEntity.ok().build();
   }
 
