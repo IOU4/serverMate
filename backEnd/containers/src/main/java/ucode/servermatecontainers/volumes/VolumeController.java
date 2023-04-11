@@ -31,4 +31,10 @@ public class VolumeController {
     volumeService.deleterVolume(id);
     return ResponseEntity.ok().build();
   }
+
+  @GetMapping
+  public ResponseEntity<Void> pruneVolumes(@PathVariable("id") String id) {
+    volumeService.pruneVolumes();
+    return ResponseEntity.ok().build();
+  }
 }
