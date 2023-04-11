@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContainersRoutingModule } from './containers-routing.module';
-import { HomeComponent } from './home/home.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ContainersListComponent } from './containers-list/containers-list.component';
 import { ContainerDetailsComponent } from './container-details/container-details.component';
-import { ContainersComponent } from './containers/containers.component';
+import { ContainersComponent } from './containers.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    ContainersListComponent,
     ContainerDetailsComponent,
     ContainersComponent
   ],

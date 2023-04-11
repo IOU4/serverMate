@@ -9,12 +9,10 @@ interface Item {
   plan: string
 }
 @Component({
-  selector: 'app-containers',
-  templateUrl: './containers.component.html',
-  styleUrls: ['./containers.component.css']
+  selector: 'app-containers-list',
+  templateUrl: './containers-list.component.html',
 })
-export class ContainersComponent {
-
+export class ContainersListComponent {
 
   tableItems: Item[] = [
     {
@@ -138,5 +136,4 @@ export class ContainersComponent {
       plan: "Annually subscription"
     },
   ]
-
 }
