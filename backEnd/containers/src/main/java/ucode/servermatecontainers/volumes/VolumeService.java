@@ -20,4 +20,7 @@ public class VolumeService {
     return dockerClient.listVolumesCmd().exec();
   }
 
+  public void deleterVolume(String volumeName) {
+    dockerClient.removeVolumeCmd(volumeName).exec();
+  }
 }
