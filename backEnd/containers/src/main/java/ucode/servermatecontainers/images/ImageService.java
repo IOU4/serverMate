@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Image;
+import com.github.dockerjava.api.model.PruneType;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +21,14 @@ public class ImageService {
 
   public List<Image> getAllImages() {
     return dockerClient.listImagesCmd().exec();
+  }
+
+  public void deleteImage(String imageId) {
+    dockerClient.removeImageCmd(imageId).exec();
+  }
+
+  public void pruneImages() {
+    dockerClient.pruneCmd(PruneType.IMAGES).exec();
   }
 
 }

@@ -3,7 +3,9 @@ package ucode.servermatecontainers.images;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +26,18 @@ public class ImageController {
   @GetMapping
   public ResponseEntity<List<Image>> getAllImages() {
     return ResponseEntity.ok(imageService.getAllImages());
+  }
+
+  @DeleteMapping("/{imageId}")
+  public ResponseEntity<Void> deleteImage(@PathVariable String imageId) {
+    imageService.deleteImage(imageId);
+    return ResponseEntity.ok().build();
+  }
+
+  @GetMapping("/prune")
+  public ResponseEntity<Void> pruneImages(@PathVariable String imageId) {
+    imageService.pruneImages();
+    return ResponseEntity.ok().build();
   }
 
 }
