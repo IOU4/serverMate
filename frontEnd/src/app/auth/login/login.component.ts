@@ -25,6 +25,7 @@ export class LoginComponent {
       },
       complete() {
         thiss.router.navigate(['/home'])
+        localStorage.setItem('token', 'true');
       }
     }
     this.authService.login(email, password).subscribe(loginObserver);

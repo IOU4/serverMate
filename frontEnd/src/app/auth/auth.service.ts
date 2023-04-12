@@ -5,10 +5,6 @@ export interface LoginResponse {
   email: string
   username: string
 }
-interface LoginError {
-  message: string
-  status: string
-}
 @Injectable({
   providedIn: 'root'
 })

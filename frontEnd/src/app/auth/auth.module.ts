@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class AuthModule { }
