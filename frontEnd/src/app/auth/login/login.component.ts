@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, LoginResponse } from '../auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +18,13 @@ export class LoginComponent {
     const thiss = this;
     const { email, password } = loginForm.value;
     const loginObserver = {
-      next(_: LoginResponse) {
+      next() {
       },
       error(err: HttpErrorResponse) {
         thiss.showAlert(err.error.message)
       },
       complete() {
-        thiss.router.navigate(['/home'])
+        thiss.router.navigate(['/'])
         localStorage.setItem('token', 'true');
       }
     }

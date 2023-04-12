@@ -10,7 +10,7 @@ export interface LoginResponse {
 })
 export class AuthService {
 
-  baseApi: string = 'http://localhost:8080/auth/';
+  baseApi: string = 'http://localhost:8081/auth/';
 
   constructor(private http: HttpClient) { }
 
