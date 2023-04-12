@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody class="text-gray-600 divide-y">
-        <tr *ngFor="let item of containers ">
+        <tr *ngFor="let item of containers" class="cursor-pointer" routerLink="/containers/{{item.id}}">
           <td class="pr-6 py-4 whitespace-nowrap">{{item.id | truncateString: 20}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.names[0]}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.image}}</td>
