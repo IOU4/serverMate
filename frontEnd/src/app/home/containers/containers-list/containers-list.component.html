@@ -14,7 +14,7 @@
         <tr>
           <th class="py-3 pr-6">Id</th>
           <th class="py-3 pr-6">Name</th>
-          <th class="py-3 pr-6">ImageName</th>
+          <th class="py-3 pr-6">Image</th>
           <th class="py-3 pr-6">State</th>
           <th class="py-3 pr-6">Status</th>
           <th class="py-3 pr-6">Created</th>
@@ -26,7 +26,7 @@
         <tr *ngFor="let item of containers" class="cursor-pointer" routerLink="/containers/{{item.id}}">
           <td class="pr-6 py-4 whitespace-nowrap">{{item.id | truncateString: 20}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.names[0]}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.image}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.image|truncateString: 30}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">
             <span class="px-3 py-2 rounded-full font-semibold text-xs" [ngClass]="{
               'text-red-600 bg-red-50':item.state == 'dead',
@@ -34,7 +34,7 @@
               'text-green-600 bg-green-50':item.state == 'running'
               }">{{item.state}}</span>
           </td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.status}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.status| truncateString:40}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">{{item.created.toLocaleString('en-US', {
             year: 'numeric',
             month: '2-digit',

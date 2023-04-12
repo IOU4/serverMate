@@ -1,15 +1,12 @@
-<!-- <div class="items-start justify-between md:flex"> -->
-<!--   <div class="max-w-lg"> -->
-<!--   </div> -->
-<!-- </div> -->
 <section>
   <div class="w-full flex flex-col gap-6 px-5 py-8 max-w-7xl sm:px-6 lg:px-8">
-    <div class="flex flex-col w-full max-w-3xl mx-auto prose text-left prose-blue">
-      <div class="w-full mx-auto">
+    <div class="flex w-full prose text-left prose-blue">
+      <div class="w-full">
         <h1 class="max-w-5xl text-xl font-bold tracking-tighter text-neutral-600 md:text-5xl lg:text-3xl lg:max-w-7xl">
           Container Details. </h1>
         <p>get details about a specific container</p>
       </div>
+      <div><app-operations [containerId]="container.Id" /> </div>
     </div>
     <div class="w-full flex flex-col pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
       <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
@@ -76,7 +73,7 @@
     <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
       <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md ">
         <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Logs: </h2>
-        <pre class=" overflow-y-scroll max-h-[16rem]">{{log}}</pre>
+        <pre class=" max-h-[16rem]  max-w-[70rem] overflow-scroll">{{log}}</pre>
       </div>
     </div>
   </div>
