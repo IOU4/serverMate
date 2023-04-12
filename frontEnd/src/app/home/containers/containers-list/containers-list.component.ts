@@ -25,6 +25,8 @@ export class ContainersListComponent implements OnInit {
               break;
             case "restarting": state = ContainerState.RESTARTING
               break;
+            case "exited": state = ContainerState.EXITED
+              break;
             default: state = ContainerState.UKNOWN
           }
           this.containers.push({

@@ -29,7 +29,7 @@
           <td class="pr-6 py-4 whitespace-nowrap">{{item.image|truncateString: 30}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">
             <span class="px-3 py-2 rounded-full font-semibold text-xs" [ngClass]="{
-              'text-red-600 bg-red-50':item.state == 'dead',
+              'text-red-600 bg-red-50':item.state == 'exited',
               'text-blue-600 bg-blue-50':item.state == 'paused',
               'text-green-600 bg-green-50':item.state == 'running'
               }">{{item.state}}</span>

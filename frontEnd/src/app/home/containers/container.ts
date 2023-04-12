@@ -13,7 +13,8 @@ export enum ContainerState {
   PAUSED = "paused",
   RESTARTING = "restarting",
   DEAD = "dead",
-  UKNOWN = "uknown"
+  UKNOWN = "uknown",
+  EXITED = "exited"
 }
 
 export interface ContainerResponse {
