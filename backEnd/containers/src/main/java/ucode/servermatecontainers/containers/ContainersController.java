@@ -3,6 +3,7 @@ package ucode.servermatecontainers.containers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +50,7 @@ public class ContainersController {
     return ResponseEntity.ok(containersService.restartContainer(containerId));
   }
 
-  @GetMapping("/{id}/remove")
+  @DeleteMapping("/{id}")
   public ResponseEntity<SuccessResponse> removeContainer(@PathVariable("id") String containerId) {
     return ResponseEntity.ok(containersService.removeContainer(containerId));
   }
