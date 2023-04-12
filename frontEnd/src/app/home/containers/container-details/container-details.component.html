@@ -1,1 +1,83 @@
-<p>container-details works!</p>
+<!-- <div class="items-start justify-between md:flex"> -->
+<!--   <div class="max-w-lg"> -->
+<!--   </div> -->
+<!-- </div> -->
+<section>
+  <div class="w-full flex flex-col gap-6 px-5 py-8 max-w-7xl sm:px-6 lg:px-8">
+    <div class="flex flex-col w-full max-w-3xl mx-auto prose text-left prose-blue">
+      <div class="w-full mx-auto">
+        <h1 class="max-w-5xl text-xl font-bold tracking-tighter text-neutral-600 md:text-5xl lg:text-3xl lg:max-w-7xl">
+          Container Details. </h1>
+        <p>get details about a specific container</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Id: </h2>
+        <p>{{container.Id}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Name: </h2>
+        <p>{{container.Names.at(0)}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col w-full pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Image Name: </h2>
+        <p>{{container.Image}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Name: </h2>
+        <p>{{container.Names.at(0)}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> ImageID: </h2>
+        <p>{{container.ImageID}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Status: </h2>
+        <p>{{container.Status}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> State: </h2>
+        <p>{{container.State}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Ports: </h2>
+        <p *ngIf="container.Ports.length == 0" class="italic text-sm">none</p>
+        <ul class="pl-8 prose">
+          <li *ngFor="let port of container.Ports" class="mb-6 border-b">
+            <p><span class="font-bold">IP:</span> {{port.IP}}</p>
+            <p><span class="font-bold">Public port:</span> {{port.PublicPort}}</p>
+            <p><span class="font-bold">Private port:</span> {{port.PrivatePort}}</p>
+            <p><span class="font-bold">Type:</span> {{port.Type}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Network: </h2>
+        <p>{{container.HostConfig.NetworkMode}}</p>
+      </div>
+    </div>
+    <div class="w-full flex flex-col g pb-4 mx-auto g border-b border-gray-200 max-w-7xl sm:flex-row">
+      <div class="flex-grow mt-6 prose text-center sm:text-left sm:mt-0 prose-md ">
+        <h2 class=" text-xl font-bold text-neutral-600 md:text-5xl lg:text-xl lg:max-w-7xl"> Logs: </h2>
+        <pre class=" overflow-y-scroll max-h-[16rem]">{{log}}</pre>
+      </div>
+    </div>
+  </div>
+</section>
