@@ -1,5 +1,6 @@
 package ucode.servermatecontainers.containers;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.Frame;
 
 import lombok.RequiredArgsConstructor;
-import ucode.servermatecontainers.exceptions.ContainerNotFoundException;
 import ucode.servermatecontainers.model.ContainerLogResponse;
 import ucode.servermatecontainers.model.SuccessResponse;
 
@@ -25,17 +25,14 @@ public class ContainersService {
   private final DockerClient dockerClient;
 
   public List<Container> getAllContaieners() {
-    return dockerClient.listContainersCmd().exec();
+    return dockerClient.listContainersCmd().withShowAll(true).exec();
   }
 
   public Container findContainer(String id) {
-    var container = dockerClient.listContainersCmd().exec()
-        .stream()
-        .filter(c -> c.getId().equals(id))
-        .findFirst();
-    if (!container.isPresent())
-      throw new ContainerNotFoundException(id);
-    return container.get();
+    return dockerClient.listContainersCmd()
+        .withShowAll(true)
+        .withIdFilter(Collections.singleton(id))
+        .exec().get(0);
   }
 
   // stop container
