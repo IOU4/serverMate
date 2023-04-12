@@ -15,26 +15,36 @@
         <tr>
           <th class="py-3 pr-6">Id</th>
           <th class="py-3 pr-6">Name</th>
-          <th class="py-3 pr-6">Image</th>
+          <th class="py-3 pr-6">ImageName</th>
+          <th class="py-3 pr-6">State</th>
           <th class="py-3 pr-6">Status</th>
           <th class="py-3 pr-6">Created</th>
           <th class="py-3 pr-6">Command</th>
-          <th class="py-3 pr-6">Ports</th>
           <th class="py-3 pr-6"></th>
         </tr>
       </thead>
       <tbody class="text-gray-600 divide-y">
-        <tr *ngFor="let item of tableItems ">
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.id}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.name}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.plan}}</td>
+        <tr *ngFor="let item of containers ">
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.id | truncateString: 20}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.names[0]}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.image}}</td>
           <td class="pr-6 py-4 whitespace-nowrap">
-            <span class="px-3 py-2 rounded-full font-semibold text-xs"
-              [ngClass]="item.status == 'Active'?'text-green-600 bg-green-50':'text-red-600 bg-red-50'">{{item.status}}</span>
+            <span class="px-3 py-2 rounded-full font-semibold text-xs" [ngClass]="{
+              'text-red-600 bg-red-50':item.state == 'dead',
+              'text-blue-600 bg-blue-50':item.state == 'paused',
+              'text-green-600 bg-green-50':item.state == 'running'
+              }">{{item.state}}</span>
           </td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.date}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.cmd}}</td>
-          <td class="pr-6 py-4 whitespace-nowrap">{{item.cmd}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.status}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.created.toLocaleString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+            })}}</td>
+          <td class="pr-6 py-4 whitespace-nowrap">{{item.command}}</td>
           <td class="text-right whitespace-nowrap">
             <a class="py-1.5 px-3 text-gray-600 hover:text-gray-500 duration-150 hover:bg-gray-50 border rounded-lg">
               Manage </a>

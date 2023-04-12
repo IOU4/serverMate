@@ -1,139 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Container, ContainerState } from '../container';
+import { ContainersService } from '../containers.service';
 
-interface Item {
-  id: string
-  name: string
-  date: string
-  status: string
-  cmd: string
-  plan: string
-}
 @Component({
   selector: 'app-containers-list',
   templateUrl: './containers-list.component.html',
 })
-export class ContainersListComponent {
+export class ContainersListComponent implements OnInit {
 
-  tableItems: Item[] = [
-    {
-      id: "123sdlkafj",
-      name: "Solo learn app",
-      date: "Oct 9, 2023",
-      status: "Active",
-      cmd: "$35.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Window wrapper",
-      date: "Oct 12, 2023",
-      status: "Active",
-      cmd: "$12.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Unity loroin",
-      date: "Oct 22, 2023",
-      status: "Archived",
-      cmd: "$20.000",
-      plan: "Annually subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Background remover",
-      date: "Jan 5, 2023",
-      status: "Active",
-      cmd: "$5.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Colon tiger",
-      date: "Jan 6, 2023",
-      status: "Active",
-      cmd: "$9.000",
-      plan: "Annually subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Solo learn app",
-      date: "Oct 9, 2023",
-      status: "Active",
-      cmd: "$35.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Window wrapper",
-      date: "Oct 12, 2023",
-      status: "Active",
-      cmd: "$12.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Unity loroin",
-      date: "Oct 22, 2023",
-      status: "Archived",
-      cmd: "$20.000",
-      plan: "Annually subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Background remover",
-      date: "Jan 5, 2023",
-      status: "Active",
-      cmd: "$5.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Colon tiger",
-      date: "Jan 6, 2023",
-      status: "Active",
-      cmd: "$9.000",
-      plan: "Annually subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Solo learn app",
-      date: "Oct 9, 2023",
-      status: "Active",
-      cmd: "$35.000",
-      plan: "Monthly subscription"
-    },
-    {
-      name: "Window wrapper",
-      date: "Oct 12, 2023",
-      status: "Active",
-      cmd: "$12.000",
-      plan: "Monthly subscription",
-      id: "123sdlkafj"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Unity loroin",
-      date: "Oct 22, 2023",
-      status: "Archived",
-      cmd: "$20.000",
-      plan: "Annually subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Background remover",
-      date: "Jan 5, 2023",
-      status: "Active",
-      cmd: "$5.000",
-      plan: "Monthly subscription"
-    },
-    {
-      id: "123sdlkafj",
-      name: "Colon tiger",
-      date: "Jan 6, 2023",
-      status: "Active",
-      cmd: "$9.000",
-      plan: "Annually subscription"
-    },
-  ]
+  constructor(private containerService: ContainersService) { }
+
+  containers: Container[] = []
+  ngOnInit(): void {
+    this.containerService.getContainers().subscribe({
+      next: (data) => {
+        data.forEach(item => {
+          let state = ContainerState.UKNOWN
+          switch (item.State) {
+            case "running": state = ContainerState.RUNNING
+              break;
+            case "dead": state = ContainerState.DEAD
+              break;
+            case "paused": state = ContainerState.PAUSED
+              break;
+            case "restarting": state = ContainerState.RESTARTING
+              break;
+            default: state = ContainerState.UKNOWN
+          }
+          this.containers.push({
+            id: item.Id,
+            command: item.Command,
+            created: new Date(item.Created),
+            image: item.Image,
+            names: item.Names,
+            state: state,
+            status: item.Status,
+          })
+        })
+
+      },
+      error: () => { },
+      complete: () => { }
+    })
+  }
 }
