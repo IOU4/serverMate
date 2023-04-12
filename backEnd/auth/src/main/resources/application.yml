@@ -6,3 +6,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+# change server port to 8081
+server:
+  port: 8081
