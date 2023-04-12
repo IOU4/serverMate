@@ -28,15 +28,15 @@
       <div class="inline-flex items-center gap-2 list-none lg:ml-auto">
         <div *ngIf="logged; then userLogged else userNotLogged"></div>
         <ng-template #userNotLogged>
-          <button (click)="gotToLogin()"
+          <button (click)="login()"
             class="items-center block px-10 py-2.5 text-base font-medium text-center text-blue-600 transition duration-500 ease-in-out transform border-2 border-white shadow-md rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Sign
             in</button>
-          <button (click)="goToRegister()"
+          <button (click)="register()"
             class="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Sign
             up</button>
         </ng-template>
         <ng-template #userLogged>
-          <button
+          <button (click)="logout()"
             class="items-center block px-10 py-2.5 text-base font-medium text-center text-blue-600 transition duration-500 ease-in-out transform border-2 border-white shadow-md rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Sign
             out</button>
         </ng-template>

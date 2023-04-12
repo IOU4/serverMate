@@ -12,12 +12,17 @@ export class HeaderComponent implements OnInit {
     if (localStorage.getItem('token') == 'true') this.logged = true;
   }
 
-  gotToLogin() {
+  login() {
     this.router.navigate(['/login'])
   }
 
-  goToRegister() {
+  register() {
     this.router.navigate(['/register'])
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    this.router.navigate(['/login'])
   }
 
 
