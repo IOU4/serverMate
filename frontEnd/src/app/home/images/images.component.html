@@ -1,0 +1,53 @@
+<div class="min-h-screen flex flex-col items-start gap-16 relative">
+  <header class="self-center">
+    <app-header />
+  </header>
+  <main class="self-center flex gap-10 ">
+    <app-sidebar class="absolute left-10" />
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="items-start justify-between md:flex">
+        <div class="max-w-lg">
+          <h1
+            class="max-w-5xl text-2xl font-bold tracking-tighter text-neutral-600 md:text-5xl lg:text-6xl lg:max-w-7xl">
+            Containers. </h1>
+          <p class="text-gray-600 mt-2">
+            List of all containers present in your machine regardless of it's status
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 relative h-max overflow-auto">
+        <table class="w-full table-auto text-sm text-left">
+          <thead class="text-gray-600 font-medium border-b">
+            <tr>
+              <th class="py-3 pr-6">Id</th>
+              <th class="py-3 pr-6">Repo</th>
+              <th class="py-3 pr-6">ParentId</th>
+              <th class="py-3 pr-6">Size</th>
+              <th class="py-3 pr-6">CreatedAt</th>
+              <th class="py-3 pr-6">Containers</th>
+              <th class="py-3 pr-6"></th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 divide-y">
+            <tr *ngFor="let item of images" class="cursor-pointer">
+              <td class="pr-6 py-4 whitespace-nowrap">{{item.Id | truncateString: 20 }}</td>
+              <td class="pr-6 py-4 whitespace-nowrap">{{item.RepoTags[0]|truncateString : 20}}</td>
+              <td class="pr-6 py-4 whitespace-nowrap">{{item.ParentId|truncateString : 20}}</td>
+              <td class="pr-6 py-4 whitespace-nowrap">{{formatBytes(item.Size)|truncateString : 20}}</td>
+              <td class="pr-6 py-4 whitespace-nowrap">{{formatDate(item.Created)|truncateString : 20}}</td>
+              <td class="pr-6 py-4 whitespace-nowrap">{{item.Containers == -1? 0: item.Containers }}</td>
+              <td class="text-right whitespace-nowrap">
+                <button (click)="deleteImage(item.Id)"
+                  class="py-1.5 px-3 text-red-600  bg-red-50 hover:text-gray-500 duration-150 hover:bg-gray-50 border rounded-lg">
+                  Delete </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <footer class="mt-auto self-center">
+    <app-footer />
+  </footer>
+</div>

@@ -2,13 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ImagesRoutingModule } from './images-routing.module';
+import { ImagesComponent } from './images.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TruncateStringPipe } from '../truncate-string.pipe';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ImagesComponent,
+  ],
   imports: [
     CommonModule,
-    ImagesRoutingModule
+    ImagesRoutingModule,
+    SharedModule,
+    TruncateStringPipe
   ]
 })
 export class ImagesModule { }
