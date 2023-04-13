@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'truncateString'
+  name: 'truncateString',
+  standalone: true
 })
 export class TruncateStringPipe implements PipeTransform {
 
