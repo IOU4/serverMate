@@ -64,6 +64,8 @@ jobs:
       # setup gradle
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+        with:
+          build-root-directory: backEnd/auth
       # Execute build
       - name: Execute Gradle build
         run: ./gradlew bootJar
