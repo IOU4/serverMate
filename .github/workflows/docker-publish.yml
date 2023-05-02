@@ -65,10 +65,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
+          arguments: bootJar
           build-root-directory: backEnd/auth
-      # Execute build
-      - name: Execute Gradle build
-        run: ./gradlew bootJar
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v4
