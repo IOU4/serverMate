@@ -57,6 +57,16 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+      # setup gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      # Execute build
+      - name: Execute Gradle build
+        run: ./gradlew bootJar
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@v4
