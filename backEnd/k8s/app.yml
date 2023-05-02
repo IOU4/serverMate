@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servermateauth-deployment
+  labels:
+    app: servermateauth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servermateauth
+  template:
+    metadata:
+      labels:
+        app: servermateauth
+    spec:
+      containers:
+        - name: servermateauth
+          image: emadou/servermateauth:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servermateauth-service
+spec:
+  type: NodePort
+  selector:
+    name: servermateauth
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001
